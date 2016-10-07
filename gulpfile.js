@@ -28,5 +28,5 @@ gulp.task('configure_nodemon', function(){
 });
 
 gulp.task('default', ['configure_nodemon', 'configure_browser-sync'], function(){
-    return gulp.watch(['./client/*.html'], ['sync_browser']);
+    return gulp.watch(['./client/*.html', './client/*.css'], ['sync_browser']);
 });
