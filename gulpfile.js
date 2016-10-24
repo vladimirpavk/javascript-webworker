@@ -1,15 +1,14 @@
 var gulp=require('gulp');
-var browserSync=require('browser-sync');
-var nodemon=require('gulp-nodemon');
 
-gulp.task('configure_browser-sync', function(){
-    return browserSync.init(
+var browserSync=require('browser-sync');
+browserSync.init(
         {
             browser: ["chrome", "firefox", "opera"],
             proxy: "http://localhost:3033/www"                       
         }
     );
-});
+
+var nodemon=require('gulp-nodemon');
 
 gulp.task('sync_browser', function(){
     return browserSync.reload();
@@ -27,6 +26,6 @@ gulp.task('configure_nodemon', function(){
         });
 });
 
-gulp.task('default', ['configure_nodemon', 'configure_browser-sync'], function(){
-    return gulp.watch(['./client/*.html', './client/*.css'], ['sync_browser']);
+gulp.task('default', ['configure_nodemon'], function(){
+    return gulp.watch(['./client/**/*.html', './client/**/*.css', './client/**/*.js'], ['sync_browser']);
 });
