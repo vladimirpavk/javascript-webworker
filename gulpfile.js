@@ -3,7 +3,7 @@ var gulp=require('gulp');
 var browserSync=require('browser-sync');
 browserSync.init(
         {
-            browser: ["chrome", "firefox", "opera"],
+            browser: ["chrome"],//, "firefox", "opera"],
             proxy: "http://localhost:3033/www"                       
         }
     );
