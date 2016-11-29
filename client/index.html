@@ -1,7 +1,22 @@
 <head>
+   
 </head>
 
 
 <body>
-    <h1>This i33444s111 the we44324b page</h1>
+    <h1 id="header1">This i33444s111 the we44324b page</h1>
+     
+    <script>
+        var worker=new Worker("jscript.js");
+        
+        worker.onmessage=function(e){            
+            document.getElementById("header1").innerHTML=e.data;
+        }
+
+        worker.postMessage(100);
+
+       
+
+    </script>
+
 </body>

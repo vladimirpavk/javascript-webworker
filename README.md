@@ -1,4 +1,9 @@
-# express-web-design
+# Web Worker - simple example
+Create a simple web worker object and pass messages to and from worker
+
+Web worker will generate random numbers and return the value to the calling function
+
+### express-web-design
 Node, Express, Gulp, BrowserSync, HTML
 For web designers. When html or css file in client folder is changed automatically refreshes targeted browsers.
 
