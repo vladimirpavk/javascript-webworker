@@ -4,18 +4,75 @@
 
 
 <body>
-    <h1 id="header1">This i33444s111 the we44324b page</h1>
-     
-    <script>
-        var worker=new Worker("jscript.js");
+    
+    <div style="width: 500px; margin:auto; outline-style: dotted">
+
+        <div>
+            <label for="num_workers">Number of workers :</label>
+            <input type="number" id="num_workers">
+        </div>
         
-        worker.onmessage=function(e){            
-            document.getElementById("header1").innerHTML=e.data;
+        <div>
+            <label for="num_numbers">How many random numbers to generate :</label>
+            <input type="number" id="num_numbers">
+        </div>
+
+        <div>
+            <button onclick="dugme_Click()">Start working</button>
+        </div>
+        
+        <div>
+            <button onclick="dugme2_Click()">Proba2</button>
+        </div>
+    </div>
+
+    <div style="display: block; width:500px; margin: auto; outline-style: dotted">
+        <ul id="lista">           
+        </ul>
+    </div>
+     
+    <script>       
+        function dugme_Click(){
+
+            document.num_of_workers=parseInt(document.getElementById("num_workers").value);          
+            document.num_of_numbers=parseInt(document.getElementById("num_numbers").value);
+            //for debuging 
+            console.log(document.num_of_workers+" - "+document.num_of_numbers);
+        
+            document.webWorkers=[];
+            
+            for(var x=0; x<document.num_of_workers; x++)
+            {
+                document.webWorkers.push({
+                    "id": x,
+                    "worker": new Worker("jscript.js")
+                });
+                //document.webWorkers[x].postMessage(document.num_of_numbers);
+            }
+
+           //console.log(document.webWorkers);
+           for(var x=0; x<document.num_of_workers; x++){
+                document.webWorkers[x].worker.onmessage=function(e){            
+                    //document.getElementById("lista").innerHTML+="<li>"+e.data+"</li>";
+                    console.log(e.data);
+             }
+           }
+
+           for(var x=0; x<document.num_of_workers; x++){
+                document.webWorkers[x].worker.postMessage(document.num_of_numbers);
+           }                   
+
+
         }
 
-        worker.postMessage(100);
+        function dugme2_Click(){
+            var worker=new Worker("jscript.js");
 
-       
+             worker.onmessage=function(e){            
+                document.getElementById("lista").innerHTML+="<li>"+e.data+"</li>";
+             }
+             worker.postMessage(100);
+        }    
 
     </script>
 

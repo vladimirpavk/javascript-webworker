@@ -1,16 +1,13 @@
-function radiRadnice(val){
-    
-    var randomNumbers = [];
-
-    for(var x=0; x<val; x++){
-        randomNumbers.push(parseInt(Math.random()*100));
-    }
-
-    return randomNumbers;    
+function generateRandomNumber()
+{
+    return parseInt(Math.random()*100);
 }
 
 this.onmessage=function(val){ 
-    //console.log(val);
-    postMessage(radiRadnice(parseInt(val.data)));
+    for(var x=0; x<val.data; x++){
+        //console.log(generateRandomNumber());
+        postMessage(generateRandomNumber());        
+    }
+    //postMessage(radiRadnice(parseInt(val.data)));
 }
 
