@@ -4,10 +4,8 @@ function generateRandomNumber()
 }
 
 this.onmessage=function(val){ 
-    for(var x=0; x<val.data; x++){
-        //console.log(generateRandomNumber());
+    for(var x=0; x<val.data; x++){       
         postMessage(generateRandomNumber());        
     }
-    //postMessage(radiRadnice(parseInt(val.data)));
 }
 
